@@ -387,17 +387,18 @@ elif os.name == 'nt':
         'HDF5': ['hdf5', 'hdf5'],
         'LZO2': ['lzo2', 'lzo2'],
         'LZO': ['liblzo', 'lzo1'],
-        'BZ2': ['bzip2', 'bzip2'],
+        'BZ2': ['libbz2-MD', 'libbz2-MD'],
         'BLOSC': ['blosc', 'blosc'],
     }
 
     # Copy the next DLL's to binaries by default.
     # Update these paths for your own system!
-    dll_files = ['\\windows\\system\\zlib1.dll',
-                 '\\windows\\system\\szip.dll',
+    dll_files = [#'\\windows\\system\\zlib1.dll',
+                 #'\\windows\\system\\szip.dll',
                  ]
     if debug:
         _platdep['HDF5'] = ['hdf5_D', 'hdf5_D']
+        _platdep['BZ2'] = ['libbz2-MDd', 'libbz2-MDd']
 
 hdf5_package = _Package("HDF5", 'HDF5', 'H5public', *_platdep['HDF5'])
 hdf5_package.target_function = 'H5close'
